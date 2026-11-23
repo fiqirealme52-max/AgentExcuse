@@ -12,4 +12,6 @@ if (LINE.length < 1 || LINE.length > 200 || !LINE.trim()) {
 }
 
 mkdirSync("/output", { recursive: true });
-writeFileSync("/output/entry.txt", LINE, "utf8");
+// Write the line with exactly one trailing newline, so the file ends cleanly
+// while the line itself stays byte-identical to the validated entry.
+writeFileSync("/output/entry.txt", LINE + "\n", "utf8");
